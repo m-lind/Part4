@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Swyx.io",
-    "author": "Shawn Wang",
-    "url": "https://www.swyx.io/",
-    "likes": 899
+    "title": "DWB",
+    "author": "David Walsh",
+    "url": "https://davidwalsh.name/",
+    "likes": 898
 }
