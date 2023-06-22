@@ -93,8 +93,29 @@ test("a blog can be deleted", async () => {
   const blogsAtEnd = await helper.blogsInDb();
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1);
 
-  const blogs = blogsAtEnd.map(b => b.title);
-  expect(blogs).not.toContain(blogToDelete.title);
+  expect(blogsAtEnd).not.toContain(blogToDelete);
+});
+
+test("a blog can be updated", async () => {
+  const blogsAtStart = await helper.blogsInDb();
+  const blogToUpdate = blogsAtStart[0];
+  const updatedBlog = {
+    title: "I am an updated blog",
+    author: "Updated Updated",
+    url: "https://updated.updated",
+    likes: 5790,
+  };
+
+  await api.put(`/api/blogs/${blogToUpdate.id}`).send(updatedBlog).expect(200);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(blogsAtStart.length);
+  const updatedBlogInDb = blogsAtEnd.find(blog => blog.id === blogToUpdate.id);
+
+  expect(updatedBlog.title).toBe(updatedBlogInDb.title);
+  expect(updatedBlog.author).toBe(updatedBlogInDb.author);
+  expect(updatedBlog.url).toBe(updatedBlogInDb.url);
+  expect(updatedBlog.likes).toBe(updatedBlogInDb.likes);
 });
 
 afterAll(async () => {
