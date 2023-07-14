@@ -24,7 +24,7 @@ usersRouter.post("/", async (request, response) => {
   response.status(201).json(savedUser);
 });
 
-usersRouter.get("/", async (reequest, response) => {
+usersRouter.get("/", async (request, response) => {
   const users = await User.find({}).populate("blogs", {
     title: 1,
     author: 1,
