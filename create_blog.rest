@@ -1,6 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2NGE2OTA1NGFiNmZhYmFiYzBlM2M5MTUiLCJpYXQiOjE2ODkzMzY5ODAsImV4cCI6MTY4OTMzNjk4NX0.MIDHIgktJet43pG8NbfUIaFU1E4qrBtEGwVapHNbXKI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2NGE2OTA1NGFiNmZhYmFiYzBlM2M5MTUiLCJpYXQiOjE2ODk0MDI2MjgsImV4cCI6MTY4OTQwNjIyOH0.5_dTfCdt73KDc9MAL8BENftcAjJR-83bkhNRkrYz08s
 
 {
     "title": "Swizec Teller's Blog",
