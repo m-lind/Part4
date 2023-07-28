@@ -56,20 +56,26 @@ blogsRouter.put(
   "/:id",
   middleware.userExtractor,
   async (request, response, next) => {
-    const body = request.body;
+    const blog = await Blog.findById(request.params.id);
+    if (!blog) {
+      return response.status(404).json({ error: "blog not found" });
+    }
 
-    const blog = {
+    const body = request.body;
+    const updatedBlog = {
       title: body.title,
       author: body.author,
       url: body.url,
       likes: body.likes,
     };
 
-    Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
-      .then(updatedBlog => {
-        response.json(updatedBlog);
-      })
-      .catch(error => next(error));
+    const user = request.user;
+    if (blog.user.toString() === user.id.toString()) {
+      await Blog.findByIdAndUpdate(request.params.id, updatedBlog, {
+        new: true,
+      });
+      response.json(updatedBlog);
+    }
   }
 );
 
